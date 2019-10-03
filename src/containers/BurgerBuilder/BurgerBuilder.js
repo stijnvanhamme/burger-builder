@@ -3,7 +3,7 @@ import React from 'react';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 
-import Aux from '../../hoc/Aux';
+import Wrapper from '../../hoc/Wrapper';
 import {INGREDIENT_PRICES} from '../../config/prices';
 import classes from './BurgerBuilder.module.css';
 
@@ -66,7 +66,7 @@ class BurgerBuilder extends React.Component {
         }
 
         return(
-            <Aux>
+            <Wrapper>
                 <Burger ingredients={this.state.ingredients}/>
                 <div className={classes.Price}>Current burger price: €{this.state.totalPrice}</div>
                 <BuildControls 
@@ -74,7 +74,7 @@ class BurgerBuilder extends React.Component {
                     ingredientRemoved={this.removeIngredient}
                     disabledInfo={disabledInfo} 
                     purchaseable={this.state.purchaseable}/>
-            </Aux>
+            </Wrapper>
         );
     }
 }
