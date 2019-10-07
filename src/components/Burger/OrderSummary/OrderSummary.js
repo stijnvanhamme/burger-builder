@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Wrapper from '../../../hoc/Wrapper';
+import Button from '../../UI/Button/Button';
 
 function OrderSummary(props) {
     const ingredientSummary = Object.keys(props.ingredients).map(el => {
@@ -15,6 +16,8 @@ function OrderSummary(props) {
                 {ingredientSummary}
             </ul>
             <p>Continue to checkout?</p>
+            <Button clicked={props.cancelOrder} buttonType='Danger'>CANCEL</Button>
+            <Button clicked={props.continueOrder} buttonType='Success'>CONTINUE</Button>
         </Wrapper>
     )
 }
