@@ -5,7 +5,7 @@ import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 
-import Wrapper from '../../hoc/Wrapper';
+import Wrapper from '../../hoc/Wrapper/Wrapper';
 import {INGREDIENT_PRICES} from '../../config/prices';
 import classes from './BurgerBuilder.module.css';
 

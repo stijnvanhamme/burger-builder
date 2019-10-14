@@ -1,9 +1,10 @@
 import React from 'react';
 
-import Wrapper from '../../../hoc/Wrapper';
+import Wrapper from '../../../hoc/Wrapper/Wrapper';
 import Button from '../../UI/Button/Button';
 
-function OrderSummary(props) {
+function  OrderSummary (props) {
+    
     const ingredientSummary = Object.keys(props.ingredients).map(el => {
         return <li key={el}><span style={{textTransform: 'capitalize'}}>{el}</span>: {props.ingredients[el]}</li>
     });
@@ -19,7 +20,8 @@ function OrderSummary(props) {
             <Button clicked={props.cancelOrder} buttonType='Danger'>CANCEL</Button>
             <Button clicked={props.continueOrder} buttonType='Success'>CONTINUE</Button>
         </Wrapper>
-    )
+    );
+       
 }
 
 export default OrderSummary;

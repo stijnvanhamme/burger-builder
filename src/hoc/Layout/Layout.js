@@ -1,5 +1,5 @@
 import React from 'react';
-import Wrapper from '../../hoc/Wrapper';
+import Wrapper from '../Wrapper/Wrapper';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 
