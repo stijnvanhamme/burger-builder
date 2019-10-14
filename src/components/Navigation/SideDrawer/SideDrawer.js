@@ -6,6 +6,7 @@ import Backdrop from '../../UI/Backdrop/Backdrop';
 import Wrapper from '../../../hoc/Wrapper';
 
 import classes from './SideDrawer.module.css';
+import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
 
 function SideDrawer (props) {
     
@@ -15,10 +16,11 @@ function SideDrawer (props) {
         <Wrapper>
             <Backdrop show={props.open} clicked={props.closed} />
             <div className={attachedClasses.join(' ')}>
-                <div className={classes.Logo}><Logo /></div>
+                <HamburgerMenu toggle={props.toggle} />
                 <nav>
                     <NavigationItems />
                 </nav>
+                <div className={classes.Logo}><Logo /></div>
             </div>
         </Wrapper>
     );

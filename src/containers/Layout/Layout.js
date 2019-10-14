@@ -9,20 +9,25 @@ import classes from './Layout.module.css';
 class Layout extends React.Component {
     
     state = {
-        showSideDrawer: true
+        showSideDrawer: false
     };
     
     sideDrawerClosedHandler = () => {
         this.setState({showSideDrawer: false});
     }
+
+    sideDrawerToggledHandler = () => {
+        this.setState({showSideDrawer: !this.state.showSideDrawer});
+    }
     
     render() {
         return (
             <Wrapper>
-                <Toolbar />
+                <Toolbar toggle={this.sideDrawerToggledHandler}/>
                 <SideDrawer
                     open={this.state.showSideDrawer} 
-                    closed={this.sideDrawerClosedHandler} 
+                    closed={this.sideDrawerClosedHandler}
+                    toggle={this.sideDrawerToggledHandler} 
                 />
                 <main className={classes.Content}>
                     {this.props.children}

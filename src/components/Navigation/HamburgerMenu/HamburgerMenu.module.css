@@ -1,0 +1,10 @@
+.Hamburger {
+    height: 60px;
+    width: 60px;
+}
+
+@media (min-width: 500px) {
+    .Hamburger {
+        display: none;
+    }
+}
