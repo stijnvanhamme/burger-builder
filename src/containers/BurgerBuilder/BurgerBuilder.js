@@ -9,6 +9,7 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 import axios from '../../axios-orders';
 
 import Wrapper from '../../hoc/Wrapper/Wrapper';
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import {INGREDIENT_PRICES} from '../../config/prices';
 import classes from './BurgerBuilder.module.css';
 
@@ -132,4 +133,4 @@ class BurgerBuilder extends React.Component {
     }
 }
 
-export default BurgerBuilder;
+export default withErrorHandler(BurgerBuilder, axios);

@@ -24,7 +24,6 @@ class Modal extends React.Component {
             </Wrapper>
         );
     }
-    
 }
 
 export default Modal;
