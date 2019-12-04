@@ -6,10 +6,11 @@ import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import Spinner from '../../components/UI/Spinner/Spinner';
 
-import axios from '../../axios-orders';
+//import axios from '../../axios-orders';
+
 
 import Wrapper from '../../hoc/Wrapper/Wrapper';
-import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
+//import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import {INGREDIENT_PRICES} from '../../config/prices';
 import classes from './BurgerBuilder.module.css';
 
@@ -27,6 +28,7 @@ class BurgerBuilder extends React.Component {
         purchasing: false,
         loading: false
     };
+
 
     updatePurchaseState (ingredients) {
         const sum = Object.keys(ingredients).map(el => {
@@ -70,40 +72,25 @@ class BurgerBuilder extends React.Component {
 
     purchaseCancelHandler = () => {
         this.setState({purchasing: false});
+        
     }
 
     purchaseContinueHandler = () => {
-        
-        this.props.history.push('/checkout');
-        // this.setState({loading: true});
+        const queryParams = Object.keys(this.state.ingredients).map((el) => {
+            return encodeURIComponent(el) + '=' + encodeURIComponent(this.state.ingredients[el]);
+        });
 
-        // const order = {
-        //     ingredients: this.state.ingredients,
-        //     price: this.state.totalPrice,
-        //     customer: {
-        //         name: 'Stijn Van Hamme',
-        //         address: {
-        //             street: 'Teststreet 1',
-        //             postalCode: '1234',
-        //             country: 'Belgium'
-        //         },
-        //         email: 'test@test.com',
-        //     },
-        //     deliveryMethod: 'FAST'
-        // };
-        // axios.post('/orders.json', order)
-        //     .then(response => {
-        //         console.log(response);
-        //         this.setState({loading: false, purchasing: false});
-        //     })
-        //     .catch(error => {
-        //         console.log(error);
-        //         this.setState({loading: false, purchasing: false});
-        //     });
+        queryParams.push('price=' + this.state.totalPrice);
+        
+        //console.log(queryParams);
+
+        this.props.history.push({
+            pathname: '/checkout',
+            search: '?' + queryParams.join('&')
+        });
     }
     
     render() {
-        console.log(this.props);
         const disabledInfo = {
             ...this.state.ingredients
         };
@@ -135,4 +122,4 @@ class BurgerBuilder extends React.Component {
     }
 }
 
-export default withErrorHandler(BurgerBuilder, axios);
+export default BurgerBuilder;
